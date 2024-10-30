@@ -39,13 +39,19 @@ def create_patient(request):
     age = data.get('age')
     email = data.get('email')
     diagnoses = data.get('diagnoses')
+    county = data.get('county')
+    subcounty = data.get('subcounty')
+    ward = data.get('ward')
 
     new_patient = Patient(
         national_id=national_id,
         full_name=full_name,
         age=age,
         email=email,
-        diagnoses=diagnoses
+        diagnoses=diagnoses,
+        county=county,
+        subcounty=subcounty,
+        ward=ward
     )
 
     new_patient.save()

@@ -9,6 +9,9 @@ class Patient(models.Model):
     age = models.IntegerField()
     email = models.EmailField()
     diagnoses = models.TextField()
+    county = models.CharField(max_length=250, null=True, blank=True)
+    subcounty = models.CharField(max_length=250, null=True, blank=True)
+    ward = models.CharField(max_length=250, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.full_name
