@@ -11,8 +11,9 @@ from accounts.models import AssignRole
 
 # Create your views here.
 @api_view(['POST'])
-@permission_classes([AllowAny]) 
-def signup_user(request):
+@permission_classes([AllowAny])
+def register_user(request):  # Make sure this is the correct name
+    print("Received request data:", request.data)
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -37,7 +38,7 @@ def signin_user(request):
         print("userId", userId)
 
         try:
-            user_role = AssignRole.objects.get(user=request.user).name  
+            user_role = AssignRole.objects.get(user=request.user).role
            
         except AssignRole.DoesNotExist:
             user_role = 'user'
